@@ -75,26 +75,26 @@ int main()
 	setlocale(LC_ALL, "ru");
 	Node* root = 0;
 	int count;
-	cout << "Ââåäèòå êîë-âî óçëîâ äåðåâà: "; cin >> count;
+	cout << "Enter the number of nodes in the tree: "; cin >> count;
 	for (int i = 0; i < count; i++)
 	{
 		random_device rd;
 		add(rd() % 56, root);
 	}
 	cout << endl;
-	cout << "Ïðÿìîé îáõîä áèíàðíîãî äåðåâà: " << endl;
+	cout << "Straight path: " << endl;
 	pr_obhod(root);
 	cout << endl;
-	cout << "Ñèììåòðè÷íûé îáõîä áèíàðíîãî äåðåâà: " << endl;
+	cout << "Center path: " << endl;
 	sim_obhod(root);
 	cout << endl;
-	cout << "Îáðàòíûé îáõîä áèíàðíîãî äåðåâà: " << endl;
+	cout << "Reversed path: " << endl;
 	obr_obhod(root);
 	cout << endl;
 	cout << endl;
-	cout << "Êîëè÷åñòâî ëèñòüåâ äåðåâà: " << CountLeafs(root) << endl;
+	cout << "Amount of leaves " << CountLeafs(root) << endl;
 	cout << endl;
 	FreeTree(root);
-	cout << "Âñÿ äèíàìè÷åñêàÿ ïàìÿòü î÷èùåíà..." << endl;
+	cout << "All dynamic memory has been cleared..." << endl;
 	return 0;
 }
