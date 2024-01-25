@@ -2,16 +2,16 @@
 #include<random>
 using namespace std;
 
-struct Node //структура ветки
+struct Node //Г±ГІГ°ГіГЄГІГіГ°Г  ГўГҐГІГЄГЁ
 {
-	int data; //поле данных
-	Node* left; //указатель на левое поддерево
-	Node* right; //указатель на правое поддерево
+	int data; //ГЇГ®Г«ГҐ Г¤Г Г­Г­Г»Гµ
+	Node* left; //ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  Г«ГҐГўГ®ГҐ ГЇГ®Г¤Г¤ГҐГ°ГҐГўГ®
+	Node* right; //ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГЇГ°Г ГўГ®ГҐ ГЇГ®Г¤Г¤ГҐГ°ГҐГўГ®
 }; 
 
-void add(int adata, Node*& anode) //функция внесения данных
+void add(int adata, Node*& anode) //ГґГіГ­ГЄГ¶ГЁГї ГўГ­ГҐГ±ГҐГ­ГЁГї Г¤Г Г­Г­Г»Гµ
 {
-	if (anode == NULL) //проверка на существование какого-либо элемента в дереве
+	if (anode == NULL) //ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  Г±ГіГ№ГҐГ±ГІГўГ®ГўГ Г­ГЁГҐ ГЄГ ГЄГ®ГЈГ®-Г«ГЁГЎГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў Г¤ГҐГ°ГҐГўГҐ
 	{
 		anode = new Node;
 		anode->data = adata;
@@ -19,15 +19,15 @@ void add(int adata, Node*& anode) //функция внесения данных
 		anode->right = NULL;
 		return;
 	}
-	else {             //иначе сверяем вносимые данные
+	else {             //ГЁГ­Г Г·ГҐ Г±ГўГҐГ°ГїГҐГ¬ ГўГ­Г®Г±ГЁГ¬Г»ГҐ Г¤Г Г­Г­Г»ГҐ
 		random_device rd;  
-		if (rd() % 2 == 0) // рандомное число в остатке от деления случайных чисел может быть либо 0, либо 1
-			add(adata, anode->left); //если 0, то добавляем в влевое поддерево
-		else add(adata, anode->right); //если 1, то добавляем в вправое поддерево
+		if (rd() % 2 == 0) // Г°Г Г­Г¤Г®Г¬Г­Г®ГҐ Г·ГЁГ±Г«Г® Гў Г®Г±ГІГ ГІГЄГҐ Г®ГІ Г¤ГҐГ«ГҐГ­ГЁГї Г±Г«ГіГ·Г Г©Г­Г»Гµ Г·ГЁГ±ГҐГ« Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј Г«ГЁГЎГ® 0, Г«ГЁГЎГ® 1
+			add(adata, anode->left); //ГҐГ±Г«ГЁ 0, ГІГ® Г¤Г®ГЎГ ГўГ«ГїГҐГ¬ Гў ГўГ«ГҐГўГ®ГҐ ГЇГ®Г¤Г¤ГҐГ°ГҐГўГ®
+		else add(adata, anode->right); //ГҐГ±Г«ГЁ 1, ГІГ® Г¤Г®ГЎГ ГўГ«ГїГҐГ¬ Гў ГўГЇГ°Г ГўГ®ГҐ ГЇГ®Г¤Г¤ГҐГ°ГҐГўГ®
 	}
 }
 
-void pr_obhod(Node*& anode)  //прямой обход
+void pr_obhod(Node*& anode)  //ГЇГ°ГїГ¬Г®Г© Г®ГЎГµГ®Г¤
 {
 	if (anode == NULL) return;
 	cout << anode->data << " ";
@@ -35,7 +35,7 @@ void pr_obhod(Node*& anode)  //прямой обход
 	pr_obhod(anode->right);
 }
 
-void sim_obhod(Node*& anode)  //симметричный обход
+void sim_obhod(Node*& anode)  //Г±ГЁГ¬Г¬ГҐГІГ°ГЁГ·Г­Г»Г© Г®ГЎГµГ®Г¤
 {
 	if (anode == NULL) return;
 	sim_obhod(anode->left);
@@ -43,7 +43,7 @@ void sim_obhod(Node*& anode)  //симметричный обход
 	sim_obhod(anode->right);
 }
 
-void obr_obhod(Node*& anode) //обратный обход
+void obr_obhod(Node*& anode) //Г®ГЎГ°Г ГІГ­Г»Г© Г®ГЎГµГ®Г¤
 {  
 	if (anode == NULL) return;
 	obr_obhod(anode->left);
@@ -51,7 +51,7 @@ void obr_obhod(Node*& anode) //обратный обход
 	cout << anode->data << " ";
 }
 
-void FreeTree(Node* anode) // освобождение памяти
+void FreeTree(Node* anode) // Г®Г±ГўГ®ГЎГ®Г¦Г¤ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ
 {
 	if (anode == NULL) return;
 	FreeTree(anode->left);
@@ -60,7 +60,7 @@ void FreeTree(Node* anode) // освобождение памяти
 	return;
 }
 
-int CountLeafs(Node*& anode) // подсчет листьев дерева
+int CountLeafs(Node*& anode) // ГЇГ®Г¤Г±Г·ГҐГІ Г«ГЁГ±ГІГјГҐГў Г¤ГҐГ°ГҐГўГ 
 {
 	if (anode == NULL) {
 		return 0;
@@ -75,121 +75,26 @@ int main()
 	setlocale(LC_ALL, "ru");
 	Node* root = 0;
 	int count;
-	cout << "Введите кол-во узлов дерева: "; cin >> count;
+	cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«-ГўГ® ГіГ§Г«Г®Гў Г¤ГҐГ°ГҐГўГ : "; cin >> count;
 	for (int i = 0; i < count; i++)
 	{
 		random_device rd;
 		add(rd() % 56, root);
 	}
 	cout << endl;
-	cout << "Прямой обход бинарного дерева: " << endl;
+	cout << "ГЏГ°ГїГ¬Г®Г© Г®ГЎГµГ®Г¤ ГЎГЁГ­Г Г°Г­Г®ГЈГ® Г¤ГҐГ°ГҐГўГ : " << endl;
 	pr_obhod(root);
 	cout << endl;
-	cout << "Симметричный обход бинарного дерева: " << endl;
+	cout << "Г‘ГЁГ¬Г¬ГҐГІГ°ГЁГ·Г­Г»Г© Г®ГЎГµГ®Г¤ ГЎГЁГ­Г Г°Г­Г®ГЈГ® Г¤ГҐГ°ГҐГўГ : " << endl;
 	sim_obhod(root);
 	cout << endl;
-	cout << "Обратный обход бинарного дерева: " << endl;
+	cout << "ГЋГЎГ°Г ГІГ­Г»Г© Г®ГЎГµГ®Г¤ ГЎГЁГ­Г Г°Г­Г®ГЈГ® Г¤ГҐГ°ГҐГўГ : " << endl;
 	obr_obhod(root);
 	cout << endl;
 	cout << endl;
-	cout << "Количество листьев дерева: " << CountLeafs(root) << endl;
+	cout << "ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г«ГЁГ±ГІГјГҐГў Г¤ГҐГ°ГҐГўГ : " << CountLeafs(root) << endl;
 	cout << endl;
 	FreeTree(root);
-	cout << "Вся динамическая память очищена..." << endl;
+	cout << "Г‚Г±Гї Г¤ГЁГ­Г Г¬ГЁГ·ГҐГ±ГЄГ Гї ГЇГ Г¬ГїГІГј Г®Г·ГЁГ№ГҐГ­Г ..." << endl;
 	return 0;
 }
-
-/*
-#include<iostream> 
-#include<random> 
-
-int tabs = 0;
-struct Node {
-	int data;
-	Node* left;
-	Node* right;
-};
-
-struct Tree {
-	Node* root;
-};
-
-Node* Add(int data, Node* node, random_device& rd) {
-	if (node == NULL) return new Node{ data, NULL, NULL };
-
-	if (rd() % 2 == 0) {
-		node->left = Add(data, node->left, rd);
-	}
-	else {
-		node->right = Add(data, node->right, rd);
-	}
-	return node;
-}
-
-Tree BuildTree() {
-	random_device rd;
-	tabs += 5;
-	int size = rd() % 4 + 10;
-	Tree tree;
-	tree.root = NULL;
-	for (int i = 0; i < size; ++i) {
-		int data = rd() % 101 - 50;
-		tree.root = Add(data, tree.root, rd);
-	}
-	tabs -= 5;
-	return tree;
-}
-
-void Clear(Node* node) {
-	if (node == NULL) return;
-	
-	Clear(node->left);
-	Clear(node->right);
-	delete node;
-}
-
-void pr_obhod(Node* node) {
-	if (node == NULL) return;
-
-	cout << node->data << " ";
-	pr_obhod(node->left);
-	pr_obhod(node->right);
-}
-
-void sim_obhod(Node* node) {
-	if (node == NULL) return;
-
-	sim_obhod(node->left);
-	cout << node->data << " ";
-	sim_obhod(node->right);
-}
-
-void obr_obhod(Node* node) {
-	if (node == NULL) return;
-
-	obr_obhod(node->left);
-	obr_obhod(node->right);
-	cout << node->data << " ";
-}
-
-int LeafsCount(Node* node) {
-	if (node == NULL) return 0;
-	if (node->left == NULL && node->right == NULL) return 1;
-	return LeafsCount(node->left) + LeafsCount(node->right);
-}
-
-int main() {
-	setlocale(LC_ALL, "ru");
-	Tree tree = BuildTree();
-	cout << "Прямой обход: ";
-	pr_obhod(tree.root);
-	cout << endl;
-	cout << "Симметричный обход: ";
-	sim_obhod(tree.root);
-	cout << endl;
-	cout << "Обратный обход: ";
-	obr_obhod(tree.root);
-	cout << endl;
-	cout << "Количество листов: " << LeafsCount(tree.root);
-	Clear(tree.root);
-}*/
