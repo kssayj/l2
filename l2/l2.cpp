@@ -2,16 +2,16 @@
 #include<random>
 using namespace std;
 
-struct Node //ñòðóêòóðà âåòêè
+struct Node 
 {
-	int data; //ïîëå äàííûõ
-	Node* left; //óêàçàòåëü íà ëåâîå ïîääåðåâî
-	Node* right; //óêàçàòåëü íà ïðàâîå ïîääåðåâî
+	int data; 
+	Node* left; 
+	Node* right; 
 }; 
 
-void add(int adata, Node*& anode) //ôóíêöèÿ âíåñåíèÿ äàííûõ
+void add(int adata, Node*& anode) 
 {
-	if (anode == NULL) //ïðîâåðêà íà ñóùåñòâîâàíèå êàêîãî-ëèáî ýëåìåíòà â äåðåâå
+	if (anode == NULL) 
 	{
 		anode = new Node;
 		anode->data = adata;
@@ -19,15 +19,15 @@ void add(int adata, Node*& anode) //ôóíêöèÿ âíåñåíèÿ äàííûõ
 		anode->right = NULL;
 		return;
 	}
-	else {             //èíà÷å ñâåðÿåì âíîñèìûå äàííûå
+	else {           
 		random_device rd;  
-		if (rd() % 2 == 0) // ðàíäîìíîå ÷èñëî â îñòàòêå îò äåëåíèÿ ñëó÷àéíûõ ÷èñåë ìîæåò áûòü ëèáî 0, ëèáî 1
-			add(adata, anode->left); //åñëè 0, òî äîáàâëÿåì â âëåâîå ïîääåðåâî
-		else add(adata, anode->right); //åñëè 1, òî äîáàâëÿåì â âïðàâîå ïîääåðåâî
+		if (rd() % 2 == 0) 
+			add(adata, anode->left); 
+		else add(adata, anode->right); 
 	}
 }
 
-void pr_obhod(Node*& anode)  //ïðÿìîé îáõîä
+void pr_obhod(Node*& anode)  
 {
 	if (anode == NULL) return;
 	cout << anode->data << " ";
@@ -35,7 +35,7 @@ void pr_obhod(Node*& anode)  //ïðÿìîé îáõîä
 	pr_obhod(anode->right);
 }
 
-void sim_obhod(Node*& anode)  //ñèììåòðè÷íûé îáõîä
+void sim_obhod(Node*& anode)  
 {
 	if (anode == NULL) return;
 	sim_obhod(anode->left);
@@ -43,7 +43,7 @@ void sim_obhod(Node*& anode)  //ñèììåòðè÷íûé îáõîä
 	sim_obhod(anode->right);
 }
 
-void obr_obhod(Node*& anode) //îáðàòíûé îáõîä
+void obr_obhod(Node*& anode) 
 {  
 	if (anode == NULL) return;
 	obr_obhod(anode->left);
@@ -51,7 +51,7 @@ void obr_obhod(Node*& anode) //îáðàòíûé îáõîä
 	cout << anode->data << " ";
 }
 
-void FreeTree(Node* anode) // îñâîáîæäåíèå ïàìÿòè
+void FreeTree(Node* anode) 
 {
 	if (anode == NULL) return;
 	FreeTree(anode->left);
@@ -60,7 +60,7 @@ void FreeTree(Node* anode) // îñâîáîæäåíèå ïàìÿòè
 	return;
 }
 
-int CountLeafs(Node*& anode) // ïîäñ÷åò ëèñòüåâ äåðåâà
+int CountLeafs(Node*& anode) 
 {
 	if (anode == NULL) {
 		return 0;
